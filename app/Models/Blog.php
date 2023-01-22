@@ -13,6 +13,11 @@ class Blog extends Model
 
     protected $table='blogs';
 
+    protected $with = [
+        'creator',
+        'image'
+    ];
+
     protected $fillable = [
         'title',
         'body',

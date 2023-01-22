@@ -41,4 +41,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany(
+            Blog::class,
+            'creator_id',
+            'id'
+        );
+    }
+
+    public function image()
+    {
+        return $this->morphOne(
+            Image::class,
+            'owns',
+            'image_type',
+            'image_id',
+            'id'
+        );
+    }
 }
